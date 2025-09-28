@@ -29,7 +29,7 @@
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             overflow-x: hidden;
             position: relative;
-            background: #0f172a; /* Warna biru gelap yang lebih elegan */
+            background: #000000; /* Warna hitam gelap elegan */
             color: #e2e8f0;
         }
 
@@ -44,19 +44,19 @@
         }
 
         #home {
-            background-image: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+            background-image: radial-gradient(ellipse at center, #111111 0%, #000000 100%);
         }
 
         #produk {
-            background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background-image: linear-gradient(135deg, #000000 0%, #111111 100%);
         }
         
         #cara-pesan {
-            background-image: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+            background-image: radial-gradient(ellipse at center, #111111 0%, #000000 100%);
         }
 
         #kontak {
-            background-image: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+            background-image: radial-gradient(ellipse at center, #111111 0%, #000000 100%);
         }
 
         /* Header Styles */
@@ -66,7 +66,7 @@
             left: 0;
             right: 0;
             height: 80px;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
@@ -78,7 +78,7 @@
         }
 
         .header.scrolled {
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(0, 0, 0, 0.9);
             height: 70px;
         }
 
@@ -94,20 +94,7 @@
         .logo-container:hover {
             transform: translateY(-2px);
         }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo svg {
-            width: 100%;
-            height: 100%;
-        }
-
+        
         .logo-text {
             color: white;
             font-size: 24px;
@@ -377,7 +364,7 @@
         }
 
         .product-card {
-            background: rgba(30, 41, 59, 0.5); /* Warna lebih gelap untuk kontras */
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -445,7 +432,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
             padding: 60px;
-            background: rgba(30, 41, 59, 0.5);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -475,19 +462,19 @@
         .contact-info-section h3 { font-size: 28px; margin-bottom: 20px; color: white; font-weight: 600;}
         .contact-info-section p { font-size: 16px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; margin-bottom: 40px; font-weight: 300;}
         .contact-details { display: flex; flex-direction: column; gap: 25px; }
-        .contact-item { display: flex; align-items: center; gap: 20px; padding: 20px; background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; transition: all 0.3s ease-in-out; }
-        .contact-item:hover { background: rgba(51, 65, 85, 0.7); transform: translateX(5px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); }
+        .contact-item { display: flex; align-items: center; gap: 20px; padding: 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; transition: all 0.3s ease-in-out; }
+        .contact-item:hover { background: rgba(255, 255, 255, 0.1); transform: translateX(5px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); }
         .contact-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .contact-icon svg { width: 24px; height: 24px; fill: white; }
         .contact-text { flex: 1; }
         .contact-text h4 { font-size: 16px; color: white; margin-bottom: 5px; font-weight: 500;}
         .contact-text p { font-size: 14px; color: rgba(255, 255, 255, 0.7); margin: 0; font-weight: 300;}
         .contact-form-section { padding-left: 40px; }
-        .contact-form { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px; }
+        .contact-form { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px; }
         .form-group { margin-bottom: 25px; }
         .form-group label { display: block; margin-bottom: 10px; color: rgba(255, 255, 255, 0.8); font-weight: 500; }
-        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; font-size: 16px; font-family: 'Poppins', sans-serif; transition: all 0.3s ease-in-out; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; background: rgba(30, 41, 59, 0.9); }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; font-size: 16px; font-family: 'Poppins', sans-serif; transition: all 0.3s ease-in-out; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; background: rgba(255, 255, 255, 0.1); }
         .form-group textarea { resize: vertical; min-height: 150px; line-height: 1.5; }
         .submit-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: 600; border-radius: 30px; cursor: pointer; transition: all 0.3s ease-in-out; width: 100%; }
         .submit-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5); }
@@ -495,7 +482,7 @@
         .image-loading::after { content: '📷'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 48px; opacity: 0.5; }
 
         /* Footer Styles */
-        .footer { background: #0f172a; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 40px 20px; }
+        .footer { background: #000000; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 40px 20px; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
         .footer-copyright { color: rgba(255, 255, 255, 0.6); font-size: 14px; }
         .footer-copyright a { color: #667eea; text-decoration: none; transition: color 0.3s ease; }
@@ -518,7 +505,7 @@
 
         @media (max-width: 768px) {
             .header { padding: 0 20px; }
-            .main-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); flex-direction: column; padding: 20px; gap: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .main-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); flex-direction: column; padding: 20px; gap: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
             .main-menu.active { display: flex; }
             .menu-toggle { display: flex; }
             .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
@@ -541,20 +528,6 @@
     <!-- Header -->
     <header class="header" id="header">
         <a href="#home" class="logo-container">
-            <div class="logo">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <rect x="10" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(-15 17.5 50)" />
-                    <rect x="35" y="15" width="15" height="70" fill="url(#grad1)" />
-                    <rect x="60" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(15 67.5 50)" />
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.5" />
-                </svg>
-            </div>
             <div class="logo-text">MapSnap</div>
         </a>
         
@@ -706,7 +679,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-copyright"> &copy; 2025 MapSnap. Semua Hak Cipta Dilindungi. | Desain oleh <a href="https://templatemo.com" target="_blank" rel="noopener noreferrer">FZL</a> </div>
+            <div class="footer-copyright"> &copy; 2025 MapSnap. Semua Hak Cipta Dilindungi. | Didesain oleh FZL </div>
             <div class="footer-links"> <a href="#" onclick="event.preventDefault(); alert('Halaman Kebijakan Privasi akan ada di sini');">Kebijakan Privasi</a> <a href="#" onclick="event.preventDefault(); alert('Halaman Syarat & Ketentuan akan ada di sini');">Syarat & Ketentuan</a> </div>
         </div>
     </footer>
