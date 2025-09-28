@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapSnap - Jual Peta Powerpoint Editable Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        TemplateMo 595 3d coverflow - Modified for MapSnap
+        https://templatemo.com/tm-595-3d-coverflow
+        */
+        @charset "utf-8";
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            background: #0f172a; /* Warna biru gelap yang lebih elegan */
+            color: #e2e8f0;
+        }
+        
+        @keyframes subtle-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: 200% 200%;
+            animation: subtle-gradient 40s ease infinite;
+        }
+
+        #home {
+            background-image: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        #produk {
+            background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        #cara-pesan {
+            background-image: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        #kontak {
+            background-image: radial-gradient(ellipse at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(15, 23, 42, 0.8); /* Warna background header disesuaikan */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            height: 70px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-2px);
+            filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.7));
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .main-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .menu-item {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .menu-item:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .menu-item:hover::after {
+            width: 100%;
+        }
+
+        .menu-item.active {
+            color: white;
+        }
+
+        .menu-item.active::after {
+            width: 100%;
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; padding: 4px; }
+        .menu-toggle span { width: 25px; height: 3px; background: white; margin: 3px 0; transition: 0.3s; border-radius: 2px; }
+
+        /* Home Section with Coverflow */
+        .coverflow-wrapper { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 80px; }
+        .coverflow-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; perspective: 1200px; position: relative; }
+        .coverflow { display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; position: relative; width: 100%; height: 400px; }
+        .coverflow-item {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Animasi lebih smooth */
+            cursor: pointer;
+            user-select: none;
+        }
+        .coverflow-item .cover { width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); position: relative; overflow: hidden; transform-style: preserve-3d; background: #333; }
+        .coverflow-item .cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+        .coverflow-item .reflection { position: absolute; top: 100%; left: 0; width: 100%; height: 100%; border-radius: 10px; transform: scaleY(-1); opacity: 0.2; filter: blur(2px); background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%); overflow: hidden; }
+        .coverflow-item.active { z-index: 100; transform: translateX(0) translateZ(0) rotateY(0deg); }
+        .coverflow-item.active .cover { box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9); }
+        .nav-button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(10px); z-index: 200; }
+        .nav-button:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-50%) scale(1.1); }
+        .nav-button.prev { left: 50px; }
+        .nav-button.next { right: 50px; }
+        .dots-container { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 200; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); cursor: pointer; transition: all 0.3s ease; }
+        .dot.active { background: rgba(255, 255, 255, 0.8); transform: scale(1.3); }
+        .info { position: absolute; top: 120px; left: 50%; transform: translateX(-50%); color: white; text-align: center; z-index: 200; }
+        .info h2 { font-size: 32px; margin-bottom: 10px; opacity: 0; animation: fadeIn 0.6s forwards; font-weight: 600; }
+        .info p { font-size: 16px; opacity: 0.7; font-weight: 300; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .play-pause-button { position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(10px); z-index: 200; }
+        .play-pause-button:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(-50%) scale(1.1); }
+        .play-pause-button .pause-icon { font-size: 16px; letter-spacing: 2px; }
+
+        /* Content Section Styling */
+        .content-container { max-width: 1400px; margin: 0 auto; padding: 40px; color: white; }
+        .content-header { text-align: center; margin-bottom: 80px; }
+        .content-header h2 { font-size: 48px; margin-top: 60px; margin-bottom: 20px; font-weight: 700; background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .content-header p { font-size: 20px; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+        
+        /* Product Card */
+        .product-card {
+            background: rgba(30, 41, 59, 0.5); /* Warna lebih gelap */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(102, 126, 234, 0.5);
+        }
+        
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; padding: 15px 30px; border-radius: 30px; font-weight: 600; transition: all 0.3s ease; }
+        .cta-button:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5); }
+        .stats-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 60px; background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 48px; font-weight: 700; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+        .stat-label { font-size: 16px; color: rgba(255, 255, 255, 0.7); }
+        .stat-label h3 { font-size: 20px; font-weight: 600; color: white; margin-bottom: 8px; }
+        .stat-label p { font-size: 16px; line-height: 1.5; font-weight: 300; }
+
+        /* Contact Section */
+        .contact-content { max-width: 1200px; margin: 0 auto; padding: 40px; color: white; }
+        .contact-header { text-align: center; margin-top: 60px; margin-bottom: 60px; }
+        .contact-header h2 { font-size: 48px; margin-bottom: 20px; font-weight: 700; background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .contact-header p { font-size: 20px; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto; font-weight: 300; }
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .contact-info-section { padding-right: 40px; }
+        .contact-info-section h3 { font-size: 28px; margin-bottom: 20px; color: white; font-weight: 600; }
+        .contact-info-section p { font-size: 16px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; margin-bottom: 40px; font-weight: 300; }
+        .contact-details { display: flex; flex-direction: column; gap: 25px; }
+        .contact-item { display: flex; align-items: center; gap: 20px; padding: 20px; background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; transition: all 0.3s ease; }
+        .contact-item:hover { background: rgba(51, 65, 85, 0.5); transform: translateX(5px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2); }
+        .contact-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon svg { width: 24px; height: 24px; fill: white; }
+        .contact-text { flex: 1; }
+        .contact-text h4 { font-size: 16px; color: white; margin-bottom: 5px; font-weight: 500; }
+        .contact-text p { font-size: 14px; color: rgba(255, 255, 255, 0.7); margin: 0; font-weight: 300; }
+        .contact-form-section { padding-left: 40px; }
+        .contact-form { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; color: rgba(255, 255, 255, 0.8); font-weight: 500; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; font-size: 16px; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; background: rgba(30, 41, 59, 0.9); }
+        .form-group textarea { resize: vertical; min-height: 150px; line-height: 1.5; }
+        .submit-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px 40px; font-size: 18px; font-weight: 600; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; width: 100%; }
+        .submit-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5); }
+        .image-loading { background: linear-gradient(45deg, #333, #555); position: relative; }
+        .image-loading::after { content: '📷'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 48px; opacity: 0.5; }
+
+        /* Footer Styles */
+        .footer { background: #0f172a; border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 40px 20px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+        .footer-copyright { color: rgba(255, 255, 255, 0.6); font-size: 14px; }
+        .footer-copyright a { color: #667eea; text-decoration: none; transition: color 0.3s ease; }
+        .footer-copyright a:hover { color: #764ba2; }
+        .footer-links { display: flex; gap: 30px; align-items: center; }
+        .footer-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+        .footer-links a:hover { color: white; }
+
+        /* Scroll to top button */
+        .scroll-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; cursor: pointer; opacity: 0; transform: translateY(100px); transition: all 0.3s ease-in-out; z-index: 999; }
+        .scroll-to-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-to-top:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5); }
+        
+        /* Scroll Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .stats-section { grid-template-columns: repeat(2, 1fr); gap: 30px; padding: 40px; }
+            .contact-container { grid-template-columns: 1fr; gap: 50px; }
+            .contact-info-section { padding-right: 0; }
+            .contact-form-section { padding-left: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 0 20px; }
+            .main-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); flex-direction: column; padding: 20px; gap: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .main-menu.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            .coverflow-item { width: 200px; height: 200px; }
+            .nav-button { width: 40px; height: 40px; font-size: 18px; }
+            .nav-button.prev { left: 20px; }
+            .nav-button.next { right: 20px; }
+            .info h2 { font-size: 24px; }
+            .info p { font-size: 14px; }
+            .logo-text { font-size: 20px; }
+            .content-header h2 { font-size: 36px; }
+            .stat-number { font-size: 36px; }
+            .contact-content h2 { font-size: 36px; }
+            .footer-content { flex-direction: column; text-align: center; gap: 20px; }
+            .footer-links { gap: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .header { height: 70px; padding: 0 15px; }
+            .header.scrolled { height: 60px; }
+            .logo { width: 40px; height: 40px; }
+            .logo-text { font-size: 18px; }
+            .coverflow-item { width: 180px; height: 180px; }
+            .content-container, .contact-content { padding: 20px; }
+            .contact-container { gap: 30px; }
+            .contact-header { margin-bottom: 40px; }
+            .contact-header h2 { font-size: 32px; margin-bottom: 15px; }
+            .contact-header p { font-size: 16px; padding: 0 10px; }
+            .contact-info-section { margin-bottom: 20px; }
+            .contact-info-section h3 { font-size: 22px; margin-bottom: 15px; }
+            .contact-info-section > p { font-size: 14px; padding: 0 10px; margin-bottom: 30px; }
+            .contact-details { gap: 15px; }
+            .contact-item { padding: 15px; gap: 12px; }
+            .contact-icon { width: 40px; height: 40px; }
+            .contact-icon svg { width: 20px; height: 20px; }
+            .contact-text h4 { font-size: 14px; }
+            .contact-text p { font-size: 12px; word-break: break-word; }
+            .contact-form { padding: 20px 15px; border-radius: 15px; }
+            .form-group { margin-bottom: 20px; }
+            .form-group label { font-size: 14px; margin-bottom: 8px; }
+            .form-group input, .form-group textarea { padding: 12px; font-size: 14px; border-radius: 8px; }
+            .form-group textarea { min-height: 120px; }
+            .submit-btn { padding: 12px 30px; font-size: 16px; border-radius: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <a href="#home" class="logo-container">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="10" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(-15 17.5 50)" />
+                    <rect x="35" y="15" width="15" height="70" fill="url(#grad1)" />
+                    <rect x="60" y="25" width="15" height="50" fill="url(#grad1)" transform="rotate(15 67.5 50)" />
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad1)" stroke-width="2" opacity="0.5" />
+                </svg>
+            </div>
+            <div class="logo-text">MapSnap</div>
+        </a>
+        
+        <nav class="main-menu" id="mainMenu">
+            <a href="#home" class="menu-item active">Katalog</a>
+            <a href="#produk" class="menu-item">Produk</a>
+            <a href="#cara-pesan" class="menu-item">Cara Pesan</a>
+            <a href="#kontak" class="menu-item">Kontak</a>
+        </nav>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Home Section (Katalog Utama) -->
+    <section id="home" class="section">
+        <div class="coverflow-wrapper">
+            <div class="info">
+                <h2 id="current-title">Peta PowerPoint Profesional</h2>
+                <p id="current-description">Tingkatkan kualitas presentasi Anda dengan koleksi peta HD kami.</p>
+            </div>
+
+            <div class="coverflow-container" tabindex="0">
+                <div class="coverflow" id="coverflow">
+                    <div class="coverflow-item" data-index="0"> <div class="cover image-loading"><img src="https://placehold.co/600x400/667eea/FFFFFF?text=Peta+Indonesia" alt="Peta Indonesia" loading="lazy"></div> <div class="reflection"></div> </div>
+                    <div class="coverflow-item" data-index="1"> <div class="cover image-loading"><img src="https://placehold.co/600x400/764ba2/FFFFFF?text=Peta+Sumatera" alt="Peta Sumatera" loading="lazy"></div> <div class="reflection"></div> </div>
+                    <div class="coverflow-item" data-index="2"> <div class="cover image-loading"><img src="https://placehold.co/600x400/667eea/FFFFFF?text=Peta+Jawa" alt="Peta Jawa" loading="lazy"></div> <div class="reflection"></div> </div>
+                    <div class="coverflow-item" data-index="3"> <div class="cover image-loading"><img src="https://placehold.co/600x400/764ba2/FFFFFF?text=Peta+Kalimantan" alt="Peta Kalimantan" loading="lazy"></div> <div class="reflection"></div> </div>
+                    <div class="coverflow-item" data-index="4"> <div class="cover image-loading"><img src="https://placehold.co/600x400/667eea/FFFFFF?text=Peta+Sulawesi" alt="Peta Sulawesi" loading="lazy"></div> <div class="reflection"></div> </div>
+                    <div class="coverflow-item" data-index="5"> <div class="cover image-loading"><img src="https://placehold.co/600x400/764ba2/FFFFFF?text=Peta+Maluku" alt="Peta Maluku" loading="lazy"></div> <div class="reflection"></div> </div>
+                    <div class="coverflow-item" data-index="6"> <div class="cover image-loading"><img src="https://placehold.co/600x400/667eea/FFFFFF?text=Peta+Papua" alt="Peta Papua" loading="lazy"></div> <div class="reflection"></div> </div>
+                </div>
+
+                <button class="nav-button prev" onclick="navigate(-1)">‹</button>
+                <button class="nav-button next" onclick="navigate(1)">›</button>
+
+                <div class="dots-container" id="dots"></div>
+                
+                <button class="play-pause-button" id="playPauseBtn" onclick="toggleAutoplay()">
+                    <span class="play-icon">▶</span>
+                    <span class="pause-icon" style="display: none;">❚❚</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produk Section -->
+    <section id="produk" class="section fade-in-section">
+        <div class="content-container">
+            <div class="content-header">
+                <h2>Katalog Produk</h2>
+                <p>Pilih peta yang Anda butuhkan untuk proyek presentasi Anda. Semua peta 100% editable.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; color: white; padding: 0 40px;">
+                <!-- Contoh Produk 1 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/600x400/667eea/FFFFFF?text=Peta+Maluku" alt="Peta Provinsi Maluku" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 25px;">
+                        <h3 style="font-size: 22px; font-weight: 600; margin-bottom: 10px;">Peta Provinsi Maluku HD</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-weight: 300;">Peta detail per kabupaten/kota. Cocok untuk presentasi data demografi.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <p style="font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Rp 50.000</p>
+                            <a href="#" class="cta-button" style="padding: 10px 20px; text-decoration: none; font-size: 14px;">Beli</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contoh Produk 2 -->
+                 <div class="product-card">
+                    <img src="https://placehold.co/600x400/764ba2/FFFFFF?text=Peta+Sumatera" alt="Peta Pulau Sumatera" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 25px;">
+                        <h3 style="font-size: 22px; font-weight: 600; margin-bottom: 10px;">Peta Pulau Sumatera</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-weight: 300;">Peta seluruh provinsi di Pulau Sumatera, lengkap dengan nama ibu kota.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <p style="font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Rp 75.000</p>
+                            <a href="#" class="cta-button" style="padding: 10px 20px; text-decoration: none; font-size: 14px;">Beli</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contoh Produk 3 -->
+                <div class="product-card">
+                    <img src="https://placehold.co/600x400/667eea/FFFFFF?text=Peta+Indonesia" alt="Peta Indonesia" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 25px;">
+                        <h3 style="font-size: 22px; font-weight: 600; margin-bottom: 10px;">Peta Indonesia 38 Provinsi</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-weight: 300;">Peta lengkap 38 provinsi di Indonesia. Aset terbaik untuk presentasi nasional.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <p style="font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Rp 125.000</p>
+                            <a href="#" class="cta-button" style="padding: 10px 20px; text-decoration: none; font-size: 14px;">Beli</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cara Pesan Section -->
+    <section id="cara-pesan" class="section fade-in-section">
+        <div class="content-container">
+            <div class="content-header">
+                <h2>Cara Pemesanan Sangat Mudah</h2>
+                <p>Hanya dalam 3 langkah sederhana, peta siap Anda gunakan.</p>
+            </div>
+            <div class="stats-section" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                 <div class="stat-item"> <div class="stat-number">1</div> <div class="stat-label"><h3>Pilih Peta & Bayar</h3><p>Pilih peta yang Anda inginkan dan lakukan pembayaran.</p></div> </div>
+                 <div class="stat-item"> <div class="stat-number">2</div> <div class="stat-label"><h3>Terima Email</h3><p>Link download file PPT akan otomatis dikirimkan ke email Anda.</p></div> </div>
+                 <div class="stat-item"> <div class="stat-number">3</div> <div class="stat-label"><h3>Download & Gunakan</h3><p>Unduh file-nya dan langsung gunakan untuk presentasi Anda.</p></div> </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="section fade-in-section">
+        <div class="contact-content">
+            <div class="contact-header">
+                <h2>Hubungi Kami</h2>
+                <p>Punya pertanyaan? Jangan ragu untuk menghubungi kami.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info-section">
+                    <h3>Mari Terhubung</h3>
+                    <p>Kami siap membantu mewujudkan presentasi terbaik Anda. Hubungi kami untuk pertanyaan seputar produk atau kerjasama.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"> <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> </div>
+                            <div class="contact-text"> <h4>Email</h4> <p>support@mapsnap.com</p> </div>
+                        </div>
+                         <div class="contact-item">
+                            <div class="contact-icon"> <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg> </div>
+                            <div class="contact-text"> <h4>Jam Operasional</h4> <p>Senin - Jumat: 9:00 - 17:00 WIB</p> </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-section">
+                    <form class="contact-form" onsubmit="handleSubmit(event)">
+                        <div class="form-group"> <label for="name">Nama Anda</label> <input type="text" id="name" name="name" required> </div>
+                        <div class="form-group"> <label for="email">Alamat Email</label> <input type="email" id="email" name="email" required> </div>
+                        <div class="form-group"> <label for="subject">Subjek</label> <input type="text" id="subject" name="subject" required> </div>
+                        <div class="form-group"> <label for="message">Pesan</label> <textarea id="message" name="message" required></textarea> </div>
+                        <button type="submit" class="submit-btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-copyright"> &copy; 2025 MapSnap. Semua Hak Cipta Dilindungi. | Desain oleh <a href="https://templatemo.com" target="_blank" rel="noopener noreferrer">TemplateMo</a> </div>
+            <div class="footer-links"> <a href="#" onclick="event.preventDefault(); alert('Halaman Kebijakan Privasi akan ada di sini');">Kebijakan Privasi</a> <a href="#" onclick="event.preventDefault(); alert('Halaman Syarat & Ketentuan akan ada di sini');">Syarat & Ketentuan</a> </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop"> <span>↑</span> </div>
+
+    <script>
+        // Coverflow functionality
+        const items = document.querySelectorAll('.coverflow-item');
+        const dotsContainer = document.getElementById('dots');
+        const currentTitle = document.getElementById('current-title');
+        const currentDescription = document.getElementById('current-description');
+        const container = document.querySelector('.coverflow-container');
+        const menuToggle = document.getElementById('menuToggle');
+        const mainMenu = document.getElementById('mainMenu');
+        let currentIndex = 3;
+        let isAnimating = false;
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainMenu.classList.toggle('active');
+        });
+        document.querySelectorAll('.menu-item:not(.external)').forEach(item => {
+            item.addEventListener('click', (e) => {
+                menuToggle.classList.remove('active');
+                mainMenu.classList.remove('active');
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mainMenu.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                mainMenu.classList.remove('active');
+            }
+        });
+        
+        const imageData = [
+            { title: "Peta Indonesia Lengkap", description: "Peta 38 Provinsi, 100% editable dalam format PPTX." },
+            { title: "Peta Pulau Sumatera", description: "Setiap provinsi dapat dipisahkan dan diwarnai." },
+            { title: "Peta Pulau Jawa", description: "Resolusi tinggi, cocok untuk presentasi data dan laporan." },
+            { title: "Peta Pulau Kalimantan", description: "Tingkatkan kualitas visual presentasi Anda dengan peta profesional." },
+            { title: "Peta Pulau Sulawesi", description: "Mudah disesuaikan dengan kebutuhan brand Anda." },
+            { title: "Peta Provinsi Maluku", description: "Detail hingga tingkat kabupaten dan kota." },
+            { title: "Peta Pulau Papua", description: "Aset visual yang wajib dimiliki untuk semua kebutuhan presentasi." }
+        ];
+
+        items.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.onclick = () => goToIndex(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        let autoplayInterval = null;
+        let isPlaying = true;
+        const playIcon = document.querySelector('.play-icon');
+        const pauseIcon = document.querySelector('.pause-icon');
+
+        function updateCoverflow() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            items.forEach((item, index) => {
+                let offset = index - currentIndex;
+                if (offset > items.length / 2) offset -= items.length;
+                else if (offset < -items.length / 2) offset += items.length;
+                
+                const absOffset = Math.abs(offset);
+                const sign = Math.sign(offset);
+                let translateX = offset * 220;
+                let translateZ = -absOffset * 200;
+                let rotateY = -sign * Math.min(absOffset * 60, 60);
+                let opacity = 1 - (absOffset * 0.2);
+                let scale = 1 - (absOffset * 0.1);
+                if (absOffset > 3) { opacity = 0; translateX = sign * 800; }
+
+                item.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+                item.style.opacity = opacity;
+                item.style.zIndex = 100 - absOffset;
+                item.classList.toggle('active', index === currentIndex);
+            });
+
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+            
+            const currentData = imageData[currentIndex];
+            currentTitle.textContent = currentData.title;
+            currentDescription.textContent = currentData.description;
+            currentTitle.style.animation = 'none';
+            currentDescription.style.animation = 'none';
+            setTimeout(() => {
+                currentTitle.style.animation = 'fadeIn 0.6s forwards';
+                currentDescription.style.animation = 'fadeIn 0.6s forwards';
+            }, 10);
+
+            setTimeout(() => { isAnimating = false; }, 700); // Disesuaikan dengan durasi transisi CSS
+        }
+
+        function navigate(direction) {
+            if (isAnimating) return;
+            currentIndex = (currentIndex + direction + items.length) % items.length;
+            updateCoverflow();
+        }
+
+        function goToIndex(index) {
+            if (isAnimating || index === currentIndex) return;
+            currentIndex = index;
+            updateCoverflow();
+        }
+
+        container.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+        items.forEach((item, index) => item.addEventListener('click', () => goToIndex(index)));
+
+        let touchStartX = 0, touchEndX = 0, isSwiping = false;
+        container.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; isSwiping = true; }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+            if (!isSwiping) return;
+            touchEndX = e.changedTouches[0].screenX;
+            const diffX = touchStartX - touchEndX;
+            if (Math.abs(diffX) > 30) {
+                handleUserInteraction();
+                navigate(diffX > 0 ? 1 : -1);
+            }
+            isSwiping = false;
+        }, { passive: true });
+
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            const reflection = item.querySelector('.reflection');
+            if (img) {
+                img.onload = function() {
+                    this.parentElement.classList.remove('image-loading');
+                    if (reflection) {
+                        reflection.style.backgroundImage = `url(${this.src})`;
+                        reflection.style.backgroundSize = 'cover';
+                    }
+                };
+                img.onerror = () => this.parentElement.classList.add('image-loading');
+            }
+        });
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => navigate(1), 4000);
+            isPlaying = true;
+            if(playIcon) playIcon.style.display = 'none';
+            if(pauseIcon) pauseIcon.style.display = 'block';
+        }
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+            isPlaying = false;
+            if(playIcon) playIcon.style.display = 'block';
+            if(pauseIcon) pauseIcon.style.display = 'none';
+        }
+        function toggleAutoplay() { isPlaying ? stopAutoplay() : startAutoplay(); }
+        function handleUserInteraction() { stopAutoplay(); }
+
+        items.forEach(item => item.addEventListener('click', handleUserInteraction));
+        document.querySelector('.nav-button.prev').addEventListener('click', handleUserInteraction);
+        document.querySelector('.nav-button.next').addEventListener('click', handleUserInteraction);
+        dots.forEach(dot => dot.addEventListener('click', handleUserInteraction));
+        container.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') handleUserInteraction(); });
+        
+        const sections = document.querySelectorAll('.section');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const header = document.getElementById('header');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        function updateActiveMenuItem() {
+            const scrollPosition = window.scrollY + 100;
+            sections.forEach(section => {
+                if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
+                    const currentId = section.getAttribute('id');
+                    menuItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === '#' + currentId) item.classList.add('active');
+                    });
+                }
+            });
+            header.classList.toggle('scrolled', window.scrollY > 50);
+            scrollToTopBtn.classList.toggle('visible', window.scrollY > 500);
+        }
+        window.addEventListener('scroll', updateActiveMenuItem);
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', e => {
+                const targetId = item.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        document.querySelector('.logo-container').addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Terima kasih atas pesan Anda! Kami akan segera menghubungi Anda kembali.');
+            event.target.reset();
+        }
+        
+        const sectionsToAnimate = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        sectionsToAnimate.forEach(section => observer.observe(section));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCoverflow();
+            container.focus();
+            startAutoplay();
+        });
+    </script>
+</body>
+</html>
+
